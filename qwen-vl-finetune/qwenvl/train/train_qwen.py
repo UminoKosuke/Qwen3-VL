@@ -179,7 +179,10 @@ def train(attn_implementation="flash_attention_2"):
     else:
         set_model(model_args, model)
 
-        if torch.distributed.get_rank() == 0:
+        # Support both distributed (torchrun) and single-GPU (python) execution
+        # torch.distributed.is_initialized() returns False when running with plain python
+        is_main_process = not torch.distributed.is_initialized() or torch.distributed.get_rank() == 0
+        if is_main_process:
             model.visual.print_trainable_parameters()
             model.model.print_trainable_parameters()
     

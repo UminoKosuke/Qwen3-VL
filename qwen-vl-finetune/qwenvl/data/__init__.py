@@ -26,12 +26,19 @@ VIDEOCHATGPT = {
     "data_path": "PATH_TO_VIDEOCHATGPT_DATA",
 }
 
+# Custom dataset for fine-tuning
+CUSTOM_DATA = {
+    "annotation_path": "data/custom_data/annotations.json",
+    "data_path": "data/custom_data/",
+}
+
 data_dict = {
     "cambrian_737k": CAMBRIAN_737K,
     "cambrian_737k_pack": CAMBRIAN_737K_PACK,
     "mp_doc": MP_DOC,
     "clevr_mc": CLEVR_MC,
     "videochatgpt": VIDEOCHATGPT,
+    "custom_data": CUSTOM_DATA,
 }
 
 
